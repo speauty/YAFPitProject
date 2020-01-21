@@ -1,0 +1,35 @@
+{
+  "name": "speauty/yaf-pit",
+  "description": "the practice of yaf",
+  "type": "project",
+  "keywords": [
+    "php",
+    "yaf"
+  ],
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "speauty",
+      "email": "speauty@163.com"
+    }
+  ],
+  "require": {
+    "php": "7.3.*",
+    "ext-yaf":"3.0.*",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "ext-libxml": "*",
+    "ext-simplexml": "*",
+    "ext-bcmath": "*",
+    "catfan/medoo": "^1.7"
+  },
+  "autoload": {
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  }
+}

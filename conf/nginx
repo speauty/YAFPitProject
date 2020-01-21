@@ -1,0 +1,11 @@
+server {
+  listen 88;
+  root   /home/speauty/GitSelf/YAFPitProject/public;
+  index  index.php index.html index.htm;
+  include php73.conf;
+  if (!-e $request_filename) {
+    rewrite ^/(.*)  /index.php/$1 last;
+  }
+  access_log  /var/log/wwwlogs/local.yaf.com.log;
+  error_log  /var/log/wwwlogs/local.yaf.com.error.log;
+}
