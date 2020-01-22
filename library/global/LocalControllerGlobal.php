@@ -14,6 +14,16 @@ use \Yaf\Controller_Abstract;
  */
 class Global_LocalControllerGlobal extends Controller_Abstract
 {
+    protected $_initSelf = [];
 
+
+    public function init()
+    {
+        if ($this->_initSelf) {
+            foreach ($this->_initSelf as $v) {
+                if (method_exists($this, $v)) $this->$v();
+            }
+        }
+    }
 }
  

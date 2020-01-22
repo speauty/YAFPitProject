@@ -29,9 +29,30 @@ class Bootstrap extends Bootstrap_Abstract
      */
     private function _initConfigIni()
     {
-        Registry::set('ini.config', Application::app()->getConfig());
+        /**
+         * 注册app配置
+         */
+        $appConfig = Application::app()->getConfig();
+        Registry::set('ini.config', $appConfig);
+
+        /**
+         * 注册插件配置
+         */
         $config = new YafConfigIni(ROOT_PATH.'/conf/plugin.ini', 'plugin');
         Registry::set('ini.plugin', $config);
+        unset($config);
+
+        /**
+         * 注册所支持的语言包配置
+         */
+        $langSupported = $appConfig->get('app.lang.support');
+        if ($langSupported) {
+            $langSupportedArr = explode(',', $langSupported);
+            foreach ($langSupportedArr as $v) {
+                $lang = new YafConfigIni(ROOT_PATH.'/lang/'.$v.'.ini', $v);
+                Registry::set('ini.lang.'.$v, $lang->get('lang.code'));
+            }
+        }
     }
 
     /**
