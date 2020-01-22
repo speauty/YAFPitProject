@@ -2,7 +2,7 @@
 /**
  * Author:  Speauty
  * Email:   speauty@163.com
- * File:    LocalMysqlAbstract.php
+ * File:    LocalMysqlGlobal.php
  * Created: 2020/1/20 下午2:27
  */
 declare(strict_types=1);
@@ -11,9 +11,9 @@ use \Yaf\Registry;
 
 
 /**
- * Class Global_LocalMysqlAbstract
+ * Class Global_LocalMysqlGlobal
  */
-class Global_LocalMysqlAbstract
+class Global_LocalMysqlGlobal
 {
     private $defaultRegisterDBName = 'mysql';
 

@@ -14,6 +14,15 @@ use \Yaf\{Bootstrap_Abstract, Registry, Dispatcher, Loader, Application, Config\
  */
 class Bootstrap extends Bootstrap_Abstract
 {
+    /**
+     * 载入composer类库
+     * @param Dispatcher $dispatcher
+     */
+    private function _initComposerAutoload(Dispatcher $dispatcher)
+    {
+        $autoload = ROOT_PATH.'/vendor/autoload.php';
+        if (file_exists($autoload)) Loader::import($autoload);
+    }
 
     /**
      * 初始化注册配置
@@ -23,16 +32,6 @@ class Bootstrap extends Bootstrap_Abstract
         Registry::set('ini.config', Application::app()->getConfig());
         $config = new YafConfigIni(ROOT_PATH.'/conf/plugin.ini', 'plugin');
         Registry::set('ini.plugin', $config);
-    }
-
-    /**
-     * 载入composer类库
-     * @param Dispatcher $dispatcher
-     */
-    private function _initComposerAutoload(Dispatcher $dispatcher)
-    {
-        $autoload = ROOT_PATH.'/vendor/autoload.php';
-        if (file_exists($autoload)) Loader::import($autoload);
     }
 
     /**
@@ -46,6 +45,9 @@ class Bootstrap extends Bootstrap_Abstract
         $loader->registerLocalNamespace(['Local']);
     }
 
+    /**
+     * 初始化Session缓存
+     */
     private function _initSession()
     {
         $session = Session::getInstance();
@@ -66,7 +68,7 @@ class Bootstrap extends Bootstrap_Abstract
         $config = $conf->get('redis.product');
         if ($config) {
             $config = $config->toArray();
-            (new Global_LocalRedisAbstract())->setDb($config, $config['name']??'');
+            (new Global_LocalRedisGlobal())->setDb($config, $config['name']??'');
         } else {
             throw new Global_LocalException('暂无配置Redis');
         }
@@ -76,7 +78,7 @@ class Bootstrap extends Bootstrap_Abstract
         $config = $conf->get('mysql.product');
         if ($config) {
             $config = $config->toArray();
-            (new Global_LocalMysqlAbstract())->setDb($config, $config['name']??'');
+            (new Global_LocalMysqlGlobal())->setDb($config, $config['name']??'');
         } else {
             throw new Global_LocalException('暂无配置MySQL');
         }

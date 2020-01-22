@@ -6,21 +6,20 @@
  * Created: 2020/1/21 下午4:47
  */
 declare(strict_types=1);
-use Yaf\Action_Abstract;
 
 
 /**
  * Class IndexAction
  */
-class IndexAction extends Action_Abstract
+class IndexAction extends Global_LocalActionGlobal
 {
-
     /**
      * @inheritDoc
      */
-    public function execute(){
-
-        var_dump($this->getController());
+    public function execute()
+    {
+        $response = $this->getController()->getResponse();
+        $response->setBody('this is my hah');
     }
 }
  

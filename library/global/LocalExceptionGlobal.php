@@ -2,15 +2,15 @@
 /**
  * Author:  Speauty
  * Email:   speauty@163.com
- * File:    LocalException.php
+ * File:    LocalExceptionGlobal.php
  * Created: 2020/1/20 下午3:44
  */
 declare(strict_types=1);
 
 /**
- * Class Global_LocalException
+ * Class Global_LocalExceptionGlobal
  */
-class Global_LocalException extends Exception
+class Global_LocalExceptionGlobal extends Exception
 {
     public function __construct(string $msg, int $code = 0)
     {

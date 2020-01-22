@@ -2,7 +2,7 @@
 /**
  * Author:  Speauty
  * Email:   speauty@163.com
- * File:    LocalRedisAbstract.php
+ * File:    LocalRedisGlobal.php
  * Created: 2020/1/20 下午2:58
  */
 declare(strict_types=1);
@@ -10,9 +10,9 @@ use \Yaf\Registry;
 
 
 /**
- * Class Global_LocalRedisAbstract
+ * Class Global_LocalRedisGlobal
  */
-class Global_LocalRedisAbstract
+class Global_LocalRedisGlobal
 {
     private $defaultRegisterRedisName = 'redis';
 

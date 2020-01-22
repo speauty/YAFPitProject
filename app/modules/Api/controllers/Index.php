@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-class IndexController extends Global_LocalControllerAbstract
+class IndexController extends Global_LocalControllerGlobal
 {
     public function indexAction()
     {
