@@ -58,7 +58,7 @@ class Bootstrap extends Bootstrap_Abstract
     /**
      * 初始化注册
      * @param Dispatcher $dispatcher
-     * @throws Global_LocalException
+     * @throws Global_LocalExceptionGlobal
      */
     private function _initRegistry(Dispatcher $dispatcher)
     {
@@ -70,7 +70,7 @@ class Bootstrap extends Bootstrap_Abstract
             $config = $config->toArray();
             (new Global_LocalRedisGlobal())->setDb($config, $config['name']??'');
         } else {
-            throw new Global_LocalException('暂无配置Redis');
+            throw new Global_LocalExceptionGlobal('暂无配置Redis');
         }
         unset($config);
 
@@ -80,7 +80,7 @@ class Bootstrap extends Bootstrap_Abstract
             $config = $config->toArray();
             (new Global_LocalMysqlGlobal())->setDb($config, $config['name']??'');
         } else {
-            throw new Global_LocalException('暂无配置MySQL');
+            throw new Global_LocalExceptionGlobal('暂无配置MySQL');
         }
         unset($config);
 

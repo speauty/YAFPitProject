@@ -18,8 +18,7 @@ class IndexAction extends Global_LocalActionGlobal
      */
     public function execute()
     {
-        $response = $this->getController()->getResponse();
-        $response->setBody('this is my hah');
+        (new Global_LocalResponseGlobal())->json();
     }
 }
  

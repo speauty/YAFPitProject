@@ -15,7 +15,7 @@ declare(strict_types=1);
 class ErrorController extends Global_LocalControllerGlobal
 {
     public $actions = [
-        'index' => 'actions/default/IndexAction',
-        'error' => 'actions/default/ErrorAction',
+        'index' => 'actions/default/IndexAction.php',
+        'error' => 'actions/default/ErrorAction.php',
     ];
 }

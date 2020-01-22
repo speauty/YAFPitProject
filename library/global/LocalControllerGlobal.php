@@ -12,5 +12,8 @@ use \Yaf\Controller_Abstract;
 /**
  * Class Global_LocalControllerGlobal
  */
-class Global_LocalControllerGlobal extends Controller_Abstract {}
+class Global_LocalControllerGlobal extends Controller_Abstract
+{
+
+}
  
