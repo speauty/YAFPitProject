@@ -29,16 +29,19 @@ class Global_LocalLang
     /**
      * getReasonPhrase
      * @param int $code
+     * @param string $default
      * @return string
      */
-    static public function getReasonPhrase(int $code):string
+    static public function getReasonPhrase(int $code, string $default = ''):string
     {
         $currentLangType = (new Helper_LocalRequest())->getLanguage();
         $language = Registry::get('ini.lang.'.$currentLangType);
         if ($language) {
-            return $language->get((string)$code)??'response code:'.$code.'[not set]';
+            return $language->get((string)$code)??$default?:'response code '.$code;
+            GLOBAL_LocalLog::log('response code:'.$code.'[not set]', 'notice');
         } else {
-            return 'response code '.$code.', but the language package '.$currentLangType.' not found';
+            GLOBAL_LocalLog::log('response code '.$code.', but the language package '.$currentLangType.' not found', 'notice');
+            return $default?:'response code '.$code;
         }
 
     }

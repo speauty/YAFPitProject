@@ -131,7 +131,7 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initRoute(Dispatcher $dispatcher) {
         $router = $dispatcher->getRouter();
         $routeArr = new YafConfigIni(ROOT_PATH.'/route/route.ini');
-        $router->addConfig($routeArr->get('main')->toArray());
+        $router->addConfig($routeArr->get('route')->toArray());
     }
 
     /**

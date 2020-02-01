@@ -18,5 +18,5 @@ try {
 } catch (\Throwable $e) {
     // 此处可截获框架启动异常
     GLOBAL_LocalLog::log($e, 'boot');
-    (new Global_LocalResponseGlobal())->json($e->getCode(), $e->getMessage());
+    (new Global_LocalResponseGlobal())->json($e->getCode(), Global_LocalLang::getReasonPhrase($e->getCode(), $e->getMessage()));
 }

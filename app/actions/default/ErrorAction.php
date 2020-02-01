@@ -21,6 +21,6 @@ class ErrorAction extends Global_LocalActionGlobal
     {
         $exception = $this->getController()->getRequest()->getException();
         GLOBAL_LocalLog::log($exception, 'error');
-        (new Global_LocalResponseGlobal())->json($exception->getCode(), Global_LocalLang::getReasonPhrase($exception->getCode()));
+        (new Global_LocalResponseGlobal())->json($exception->getCode(), Global_LocalLang::getReasonPhrase($exception->getCode(), $exception->getMessage()));
     }
 }
