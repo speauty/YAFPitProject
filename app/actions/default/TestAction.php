@@ -18,6 +18,6 @@ class TestAction extends Global_LocalActionGlobal
      */
     public function execute()
     {
-        var_dump($this->getController()->actions);
+        (new Global_LocalResponseGlobal())->json(Global_LocalLang::YAF_OK, Global_LocalLang::getReasonPhrase(Global_LocalLang::YAF_OK), [$this->getController()->getModuleName()]);
     }
 }

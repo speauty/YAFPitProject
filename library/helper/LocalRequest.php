@@ -7,11 +7,22 @@
  */
 declare(strict_types=1);
 use \Yaf\Request_Abstract;
+use Yaf\Request\Http as Request_Http;
 
 class Helper_LocalRequest extends Request_Abstract
 {
+    private $_http = null;
+
+    public function getHttp():Request_Http
+    {
+        if (!$this->_http instanceof Request_Http) {
+            $this->_http = new Request_Http();
+        }
+        return $this->_http;
+    }
+
     public function getLanguage():string
     {
-        return strtolower(parent::getLanguage());
+        return strtolower($this->getHttp()->get('lang', parent::getLanguage()));
     }
 }

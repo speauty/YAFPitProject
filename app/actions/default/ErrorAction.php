@@ -20,7 +20,7 @@ class ErrorAction extends Global_LocalActionGlobal
     public function execute()
     {
         $exception = $this->getController()->getRequest()->getException();
-        (new Global_LocalResponseGlobal())->json($exception->getCode(), $exception->getMessage());
-
+        GLOBAL_LocalLog::log($exception, 'error');
+        (new Global_LocalResponseGlobal())->json($exception->getCode(), Global_LocalLang::getReasonPhrase($exception->getCode()));
     }
 }

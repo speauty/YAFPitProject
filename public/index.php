@@ -17,5 +17,6 @@ try {
     $app->bootstrap()->run();
 } catch (\Throwable $e) {
     // 此处可截获框架启动异常
-    var_dump($e->getMessage());
+    GLOBAL_LocalLog::log($e, 'boot');
+    (new Global_LocalResponseGlobal())->json($e->getCode(), $e->getMessage());
 }

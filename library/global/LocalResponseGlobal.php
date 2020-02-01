@@ -17,7 +17,7 @@ final class Global_LocalResponseGlobal extends Response_Abstract
     protected $_defaultHeaders = [
         'Content-Type' => 'application/json;charset=utf-8',
         'Server' => 'unknown',
-        'X-Powered-By' => 'PHP/5.3'
+        'X-Powered-By' => 'unknown'
     ];
     protected $_defaultBody = [
         'code' => 0,
@@ -113,7 +113,7 @@ final class Global_LocalResponseGlobal extends Response_Abstract
      * @param string $msg
      * @param array|null $data
      */
-    public function json(int $code = 0, string $msg = '', array $data = null)
+    public function json(int $code = 0, string $msg = '', array $data = null):void
     {
         if ($code) $this->setDefaultBodyCode($code);
         if ($msg) $this->setDefaultBodyMsg($msg);
@@ -122,5 +122,6 @@ final class Global_LocalResponseGlobal extends Response_Abstract
         $http->setBody($this->getDefaultBody(true));
         $this->resetDefaultBody();
         $http->response();
+        return ;
     }
 }

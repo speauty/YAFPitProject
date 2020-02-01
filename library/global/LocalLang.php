@@ -14,6 +14,7 @@ use \Yaf\Registry;
  */
 class Global_LocalLang
 {
+    const YAF_OK=200;
     const YAF_ERR_STARTUP_FAILED=512;
     const YAF_ERR_ROUTE_FAILED=513;
     const YAF_ERR_DISPATCH_FAILED=514;
@@ -25,14 +26,19 @@ class Global_LocalLang
     const YAF_ERR_AUTOLOAD_FAILED=520;
     const YAF_ERR_TYPE_ERROR=521;
 
-    static public function getMsg(int $code):string
+    /**
+     * getReasonPhrase
+     * @param int $code
+     * @return string
+     */
+    static public function getReasonPhrase(int $code):string
     {
         $currentLangType = (new Helper_LocalRequest())->getLanguage();
         $language = Registry::get('ini.lang.'.$currentLangType);
         if ($language) {
-            return $language->get((string)$code)??'error code:'.$code.'(not detail)';
+            return $language->get((string)$code)??'response code:'.$code.'[not set]';
         } else {
-            return 'error code:'.$code.'(language package:'.$currentLangType.' not found)';
+            return 'response code '.$code.', but the language package '.$currentLangType.' not found';
         }
 
     }

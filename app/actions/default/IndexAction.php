@@ -18,7 +18,7 @@ class IndexAction extends Global_LocalActionGlobal
      */
     public function execute()
     {
-        (new Global_LocalResponseGlobal())->json(Global_LocalLang::YAF_ERR_DISPATCH_FAILED, Global_LocalLang::getMsg(Global_LocalLang::YAF_ERR_DISPATCH_FAILED));
+        (new Global_LocalResponseGlobal())->json(Global_LocalLang::YAF_OK, Global_LocalLang::getReasonPhrase(Global_LocalLang::YAF_OK));
     }
 }
  
